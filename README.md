@@ -5,7 +5,7 @@ Klipper mesh on print area only (RatOS adaptation)
 Complete credit goes to ChipCE (https://gist.github.com/ChipCE/95fdbd3c2f3a064397f9610f915f7d02) for the idea and sample code.\
 Idea to make it as repository goes to Turge08 (https://github.com/Turge08/print_area_bed_mesh).
 
-I only remixed it to better suit my needs.
+I only remixed it to suit my needs.
 
 ## Setup
 ### 1. Download and install the macro
