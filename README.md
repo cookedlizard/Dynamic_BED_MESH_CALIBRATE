@@ -86,3 +86,5 @@ START_PRINT EXTRUDER_TEMP=[first_layer_temperature] BED_TEMP=[first_layer_bed_te
 PRINT_MIN=%MINX%,%MINY% PRINT_MAX=%MAXX%,%MAXY%
 ```
 *(Cura slicer plugin) To make the macro to work in Cura slicer, you need to install the post process plugin by frankbags - In cura menu Help -> Show configuration folder. - Copy the python script from the above link in to plugins folder. - Restart Cura - In cura menu Extensions -> Post processing and select Mesh Print Size.
+
+I don't use Cura, I can't confirm the guide works.
