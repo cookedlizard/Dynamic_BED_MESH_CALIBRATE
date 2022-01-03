@@ -22,6 +22,17 @@ After lines:
 ```
 add the following:
 ```
-[include /home/pi/Dynamic_BED_MESH_CALIBRATE/*.cfg]
+[include /home/pi/Dynamic_BED_MESH_CALIBRATE/BED_MESH_CALIBRATE.cfg]
 ```
+### 3. Update Moonraker for easy updating
+From Fluidd/Mainsail, edit moonraker.conf (in the same folder as your printer.cfg file) and add:
+```
+[update_manager Dynamic_BED_MESH_CALIBRATE]
+type: git_repo
+path: ~/Dynamic_BED_MESH_CALIBRATE
+origin: https://github.com/kmarty/Dynamic_BED_MESH_CALIBRATE.git
+is_system_service: False
+```
+NOTE: You must perform step #1 at least once or Moonraker will generate an error.
+
 TODO
