@@ -3,9 +3,9 @@ Klipper mesh on print area only (RatOS adaptation)
 
 ## Credit
 Complete credit goes to ChipCE (https://gist.github.com/ChipCE/95fdbd3c2f3a064397f9610f915f7d02) for the idea and sample code.\
-Idea to make it as repository goes to Turge08 (https://github.com/Turge08).
+Idea to make it as repository goes to Turge08 (https://github.com/Turge08/print_area_bed_mesh).
 
-I only remixed it (well, and slightly modified it).
+I only remixed it to better suit my needs.
 
 ## Setup
 ### 1. Download and install the macro
@@ -75,3 +75,14 @@ by:
     {% endif %}
 ```
 in macro "_START_PRINT_BED_MESH".
+
+### 5. Modify your printer's start g-code in your slicer
+- PrusaSlicer/SuperSlicer:
+```
+START_PRINT EXTRUDER_TEMP=[first_layer_temperature] BED_TEMP=[first_layer_bed_temperature] AREA_START={first_layer_print_min[0]},{first_layer_print_min[1]} AREA_END={first_layer_print_max[0]},{first_layer_print_max[1]}
+```
+- Cura (add this to your start gcode at the end of the START_PRINT command):
+```
+PRINT_MIN=%MINX%,%MINY% PRINT_MAX=%MAXX%,%MAXY%
+```
+*(Cura slicer plugin) To make the macro to work in Cura slicer, you need to install the post process plugin by frankbags - In cura menu Help -> Show configuration folder. - Copy the python script from the above link in to plugins folder. - Restart Cura - In cura menu Extensions -> Post processing and select Mesh Print Size.
