@@ -5,7 +5,7 @@ Klipper mesh on print area only (RatOS adaptation)
 Complete credit goes to ChipCE (https://gist.github.com/ChipCE/95fdbd3c2f3a064397f9610f915f7d02) for the idea and sample code.\
 Idea to make it as repository goes to Turge08 (https://github.com/Turge08).
 
-I only remixed it (well, and slightly modified it. It is mostly syntactic sugar anyway).
+I only remixed it (well, and slightly modified it).
 
 ## Setup
 ### 1. Download and install the macro
@@ -35,4 +35,43 @@ is_system_service: False
 ```
 NOTE: You must perform step #1 at least once or Moonraker will generate an error.
 
-TODO
+### 4. Modify "START_PRINT" and "_START_PRINT_BED_MESH" macros
+#### 4.1 Modify "START_PRINT"
+I can't guarantee the original RatOS *START_PRINT* macro won't change, therefore following doesn't have to work in the future.
+- In *printer.cfg* add following line after "[include /home/pi/Dynamic_BED_MESH_CALIBRATE/BED_MESH_CALIBRATE.cfg]":
+```
+[include /home/pi/Dynamic_BED_MESH_CALIBRATE/START_PRINT.cfg]
+```
+The idea is replace line:
+```
+  _START_PRINT_BED_MESH
+```
+by:
+```
+  {% if params.AREA_START and params.AREA_END %}
+    _START_PRINT_BED_MESH AREA_START={params.AREA_START} AREA_END={params.AREA_END}
+  {% else %}
+    _START_PRINT_BED_MESH
+  {% endif %}
+```
+in macro "START_PRINT".
+
+#### 4.2 Modify "_START_PRINT_BED_MESH"
+The very same as with *START_PRINT*, no guarantee.
+- In *printer.cfg* add following line after include line with "START_PRINT.cfg":
+```
+[include /home/pi/Dynamic_BED_MESH_CALIBRATE/_START_PRINT_BED_MESH.cfg]
+```
+The idea is replace line:
+```
+    BED_MESH_CALIBRATE PROFILE=ratos
+```
+by:
+```
+    {% if params.AREA_START and params.AREA_END %}
+      BED_MESH_CALIBRATE PROFILE=ratos AREA_START={params.AREA_START} AREA_END={params.AREA_END}
+    {% else %}
+      BED_MESH_CALIBRATE PROFILE=ratos
+    {% endif %}
+```
+in macro "_START_PRINT_BED_MESH".
