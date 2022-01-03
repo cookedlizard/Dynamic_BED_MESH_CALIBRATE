@@ -42,7 +42,7 @@ I can't guarantee the original RatOS *START_PRINT* macro won't change, therefore
 ```
 [include /home/pi/Dynamic_BED_MESH_CALIBRATE/START_PRINT.cfg]
 ```
-The idea is replace line:
+The goal is to replace line:
 ```
   _START_PRINT_BED_MESH
 ```
@@ -62,7 +62,7 @@ The very same as with *START_PRINT*, no guarantee.
 ```
 [include /home/pi/Dynamic_BED_MESH_CALIBRATE/_START_PRINT_BED_MESH.cfg]
 ```
-The idea is replace line:
+The goal is to replace line:
 ```
     BED_MESH_CALIBRATE PROFILE=ratos
 ```
