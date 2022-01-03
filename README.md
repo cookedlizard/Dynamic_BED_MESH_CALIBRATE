@@ -14,4 +14,14 @@ SSH into the RPi and run the following commands:
 cd ~
 git clone https://github.com/kmarty/Dynamic_BED_MESH_CALIBRATE.git
 ```
+### 2. Include macro in your printer.cfg
+After lines:
+```
+### USER OVERRIDES
+# Place all your overrides here
+```
+add the following:
+```
+[include /home/pi/Dynamic_BED_MESH_CALIBRATE/*.cfg]
+```
 TODO
